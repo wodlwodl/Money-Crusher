@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#241044">
+  <meta name="description" content="Break targets, earn coins, and unlock every level in Money Crusher.">
+  <title>Money Crusher — Clicker Arcade</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #fff9e8;
+      background: #241044;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      --gold: #ffd84d;
+      --orange: #ff9d27;
+      --panel: rgba(57, 31, 99, .94);
+      --muted: #d6c9ed;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-width: 320px;
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 50% -10%, rgba(181, 111, 255, .48), transparent 50%),
+        linear-gradient(145deg, #26104c, #48206e 55%, #241044);
+    }
+    button { font: inherit; }
+    .app {
+      display: flex;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100svh;
+      flex-direction: column;
+      margin: 0;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 18px clamp(16px, 4vw, 56px);
+    }
+    .brand {
+      margin: 0;
+      color: var(--gold);
+      font-size: clamp(1.35rem, 5vw, 2rem);
+      font-weight: 1000;
+      letter-spacing: .04em;
+      text-shadow: 0 3px 0 #9c511b;
+    }
+    .coin-pill {
+      flex: 0 0 auto;
+      padding: 9px 14px;
+      border: 2px solid rgba(255, 216, 77, .7);
+      border-radius: 999px;
+      background: rgba(40, 19, 69, .75);
+      color: var(--gold);
+      font-weight: 800;
+    }
+    .panel {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: clamp(20px, 5vw, 34px);
+      border: 2px solid rgba(255, 216, 77, .8);
+      border-right: 0;
+      border-left: 0;
+      border-radius: 0;
+      background: var(--panel);
+      box-shadow: 0 16px 40px rgba(13, 5, 28, .32), inset 0 1px rgba(255, 255, 255, .08);
+      text-align: center;
+    }
+    h2 { margin: 0 0 10px; font-size: clamp(1.4rem, 4vw, 1.8rem); }
+    p { color: var(--muted); line-height: 1.55; }
+    .subtitle { max-width: 440px; margin: 0 auto 24px; }
+    .menu-scene {
+      display: block;
+      width: min(100%, 1080px);
+      height: clamp(168px, 30vh, 350px);
+      margin: 0 auto 12px;
+      object-fit: contain;
+    }
+    .button-grid, .level-grid, .tool-grid {
+      display: grid;
+      width: min(100%, 1000px);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .button {
+      min-height: 48px;
+      padding: 11px 16px;
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      background: var(--orange);
+      color: #32116b;
+      font-weight: 850;
+      cursor: pointer;
+      box-shadow: 0 4px 0 #b86117;
+      transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+      touch-action: manipulation;
+    }
+    .button:hover:not(:disabled) { filter: brightness(1.1); transform: translateY(-1px); }
+    .button:active:not(:disabled) { transform: translateY(2px); box-shadow: 0 2px 0 #b86117; }
+    .button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+    .button:disabled { cursor: not-allowed; filter: grayscale(.45); opacity: .58; box-shadow: none; }
+    .button.secondary { border-color: #b88cf1; background: #7145a6; color: white; box-shadow: 0 4px 0 #43236e; }
+    .button.hit-button { width: min(100%, 280px); min-height: 60px; font-size: 1.25rem; }
+    .button.small { min-height: 42px; padding: 8px 12px; font-size: .92rem; }
+    .button.selected { outline: 3px solid #fff; outline-offset: 2px; }
+    .level-grid { margin: 22px 0; }
+    .level-button { display: flex; flex-direction: column; align-items: center; gap: 4px; min-height: 74px; }
+    .level-button small, .tool-card small { font-size: .78rem; font-weight: 600; opacity: .85; }
+    .stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 20px;
+      margin: 18px 0 8px;
+      font-weight: 750;
+    }
+    .stats span { color: var(--gold); }
+    .progress-track {
+      width: min(100%, 1000px);
+      height: 12px;
+      overflow: hidden;
+      margin: 14px 0 8px;
+      border-radius: 99px;
+      background: #24133d;
+    }
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #ff9d27, #ffe15a);
+      transition: width .2s ease;
+    }
+    .target {
+      position: relative;
+      isolation: isolate;
+      display: grid;
+      width: clamp(150px, 24vmin, 260px);
+      height: clamp(150px, 24vmin, 260px);
+      place-items: center;
+      margin: 18px auto;
+      border: 3px solid rgba(255, 216, 77, .55);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 25%, rgba(255, 255, 255, .16), transparent 34%),
+        radial-gradient(circle at 50% 45%, #754aa6, #32195b 76%);
+      box-shadow: inset 0 0 0 9px rgba(27, 13, 51, .2), 0 16px 30px rgba(13, 5, 28, .3);
+      user-select: none;
+      animation: bob 2.2s ease-in-out infinite;
+    }
+    .target::before {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+    .target svg {
+      position: relative;
+      z-index: 1;
+      width: 86%;
+      height: 86%;
+      overflow: visible;
+      filter: drop-shadow(0 8px 7px rgba(17, 7, 34, .3));
+    }
+    .target.is-damaged::after {
+      position: absolute;
+      z-index: 2;
+      top: 3%;
+      right: 1%;
+      content: "💥";
+      font-size: clamp(2rem, 6vmin, 3.2rem);
+      filter: drop-shadow(0 3px 2px rgba(17, 7, 34, .4));
+      animation: pop .24s ease-out;
+      pointer-events: none;
+    }
+    .target.cracked { animation: shake .22s ease-in-out; }
+    @keyframes bob { 50% { transform: translateY(-7px) rotate(2deg); } }
+    @keyframes pop {
+      from { opacity: 0; transform: scale(.4) rotate(-18deg); }
+      to { opacity: 1; transform: scale(1) rotate(0); }
+    }
+    @keyframes shake {
+      25% { transform: translateX(-8px) rotate(-5deg); }
+      75% { transform: translateX(8px) rotate(5deg); }
+    }
+    .game-message { min-height: 28px; margin: 12px 0; color: #ffe77b; font-weight: 750; }
+    .game-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tool-grid { margin: 20px 0; }
+    .tool-card { display: grid; gap: 5px; justify-items: center; min-height: 104px; }
+    .tool-icon { font-size: 1.5rem; }
+    .shop-note { min-height: 24px; margin-bottom: 0; color: #ffe77b; }
+    .notice { min-height: 22px; margin: 12px 0 0; color: #ffe77b; font-size: .9rem; }
+    .hidden { display: none !important; }
+    .footer {
+      margin-top: auto;
+      padding: 12px 16px max(12px, env(safe-area-inset-bottom));
+      color: #c6b5df;
+      font-size: .82rem;
+      text-align: center;
+    }
+    @media (max-width: 440px) {
+      .button-grid, .level-grid, .tool-grid { gap: 8px; }
+      .panel { padding: 24px 16px; }
+      .target { font-size: 5rem; }
+    }
+    @media (min-width: 700px) {
+      .level-grid, .tool-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <h1 class="brand">💰 MONEY CRUSHER</h1>
+      <div class="coin-pill" aria-live="polite">🪙 <span id="headerCoins">0</span></div>
+    </header>
+
+    <section id="menu" class="panel">
+      <h2>Ready to crush it?</h2>
+      <p class="subtitle">Break targets, collect coins, and unlock all 8 levels. Your progress is saved on this device.</p>
+      <img class="menu-scene" src="assets/menu-scene.svg" alt="Money falls from the sky as a big piggy bank runs away from a stick figure holding a hammer.">
+      <div class="button-grid">
+        <button id="startButton" class="button">START GAME</button>
+        <button id="levelsButton" class="button secondary">LEVEL SELECT</button>
+        <button id="menuShopButton" class="button secondary">🛒 SHOP</button>
+        <button id="resumeButton" class="button secondary hidden">RESUME GAME</button>
+      </div>
+      <p id="menuProgress" class="notice" aria-live="polite"></p>
+    </section>
+
+    <section id="game" class="panel hidden" aria-labelledby="levelName">
+      <h2 id="levelName"></h2>
+      <div class="stats">
+        <div>⏱️ Time: <span id="time">30</span>s</div>
+        <div>🪙 Coins: <span id="gameCoins">0</span></div>
+        <div>Hits: <span id="hits">0</span> / <span id="goal">5</span></div>
+        <div>Tool: <span id="equippedTool">Hammer</span></div>
+      </div>
+      <div class="progress-track" role="progressbar" aria-label="Target damage" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <div id="target" class="target" aria-hidden="true">🐷</div>
+      <p id="message" class="game-message" aria-live="polite">Break the target before time runs out!</p>
+      <button id="hitButton" class="button hit-button">🔨 HIT!</button>
+      <div class="game-actions">
+        <button id="gameShopButton" class="button secondary small">🛒 SHOP</button>
+        <button id="gameMenuButton" class="button secondary small">MAIN MENU</button>
+      </div>
+    </section>
+
+    <section id="levels" class="panel hidden">
+      <h2>Choose a level</h2>
+      <p>Clear a level to unlock the next one.</p>
+      <div id="levelButtons" class="level-grid"></div>
+      <button id="levelsBackButton" class="button secondary">BACK</button>
+    </section>
+
+    <section id="shop" class="panel hidden">
+      <h2>🛒 Tool Shop</h2>
+      <p>Your coins: <strong id="shopCoins">0</strong></p>
+      <div id="toolCards" class="tool-grid"></div>
+      <p id="shopMessage" class="shop-note" aria-live="polite"></p>
+      <button id="shopBackButton" class="button secondary">BACK</button>
+    </section>
+
+    <section id="result" class="panel hidden" aria-live="polite">
+      <h2 id="resultTitle"></h2>
+      <p id="resultText"></p>
+      <div class="button-grid">
+        <button id="retryButton" class="button">TRY AGAIN</button>
+        <button id="resultMenuButton" class="button secondary">MAIN MENU</button>
+      </div>
+    </section>
+    <footer class="footer">Money Crusher · A tiny arcade game for your browser</footer>
+  </main>
+
+  <script>
+    "use strict";
+
+    const levels = [
+      { name: "Piggy Bank", picture: "🐷", art: "piggy-bank", hits: 5, reward: 300 },
+      { name: "Mom's Wallet", picture: "👛", art: "mom-wallet", hits: 6, reward: 400 },
+      { name: "Dad's Wallet", picture: "👝", art: "dad-wallet", hits: 7, reward: 500 },
+      { name: "Teacher's Desk", picture: "🗄️", art: "teacher-desk", hits: 8, reward: 100 },
+      { name: "Safe", picture: "🔐", art: "safe", hits: 9, reward: 100 },
+      { name: "Big Safe", picture: "🏦", art: "big-safe", hits: 10, reward: 600 },
+      { name: "Bank", picture: "🏛️", art: "bank", hits: 12, reward: 100 },
+      { name: "My Wallet", picture: "💼", art: "my-wallet", hits: 999, reward: 100 }
+    ];
+    const tools = {
+      hammer: { name: "Hammer", icon: "🔨", price: 0, cooldown: 5000 },
+      pin: { name: "Pin", icon: "📌", price: 500, cooldown: 3000 },
+      drill: { name: "Drill", icon: "⚙️", price: 5000, cooldown: 2000 },
+      jackhammer: { name: "Jackhammer", icon: "💥", price: 1000000, cooldown: 0 }
+    };
+    const storageKey = "money-crusher-progress-v1";
+    const $ = id => document.getElementById(id);
+    const views = ["menu", "game", "levels", "shop", "result"];
+
+    let coins = 0;
+    let unlocked = 1;
+    let owned = { hammer: true, pin: false, drill: false, jackhammer: false };
+    let selectedTool = "hammer";
+    let level = 1;
+    let hits = 0;
+    let time = 30;
+    let timer = null;
+    let cooldownTimer = null;
+    let cooldownUntil = 0;
+    let finished = false;
+    let shopReturnToGame = false;
+    let hasGameToResume = false;
+    let storageWarning = "";
+
+    function showView(name) {
+      views.forEach(view => $(view).classList.toggle("hidden", view !== name));
+    }
+
+    function loadProgress() {
+      try {
+        const saved = localStorage.getItem(storageKey);
+        if (!saved) return;
+        const data = JSON.parse(saved);
+        const valid = data && Number.isSafeInteger(data.coins) && data.coins >= 0
+          && Number.isInteger(data.unlocked) && data.unlocked >= 1 && data.unlocked <= levels.length
+          && data.owned && typeof data.owned === "object";
+        if (!valid) throw new Error("Saved progress has an invalid format.");
+        coins = data.coins;
+        unlocked = data.unlocked;
+        for (const id of Object.keys(tools)) owned[id] = id === "hammer" || data.owned[id] === true;
+        if (owned[data.selectedTool]) selectedTool = data.selectedTool;
+      } catch (error) {
+        console.error("Could not load saved progress.", error);
+        storageWarning = "Saved progress could not be loaded. A fresh game is ready.";
+      }
+    }
+
+    function saveProgress() {
+      try {
+        localStorage.setItem(storageKey, JSON.stringify({ coins, unlocked, owned, selectedTool }));
+      } catch (error) {
+        console.error("Could not save game progress.", error);
+        storageWarning = "Progress could not be saved in this browser.";
+      }
+    }
+
+    function renderMenuStatus() {
+      $("menuProgress").textContent = storageWarning
+        || ("Level " + unlocked + " unlocked · " + coins.toLocaleString() + " coins");
+    }
+
+    function updateCoins(persist = true) {
+      $("headerCoins").textContent = coins.toLocaleString();
+      $("gameCoins").textContent = coins.toLocaleString();
+      $("shopCoins").textContent = coins.toLocaleString();
+      if (persist) saveProgress();
+      renderMenuStatus();
+    }
+
+    function showMenu() {
+      clearInterval(timer);
+      timer = null;
+      showView("menu");
+      $("resumeButton").classList.toggle("hidden", !hasGameToResume);
+      updateCoins(false);
+    }
+
+    function renderLevels() {
+      const container = $("levelButtons");
+      container.replaceChildren();
+      levels.forEach((item, index) => {
+        const levelNumber = index + 1;
+        const button = document.createElement("button");
+        button.className = "button secondary level-button";
+        button.disabled = levelNumber > unlocked;
+        button.innerHTML = "<strong>" + item.picture + " Level " + levelNumber + "</strong><small>"
+          + (button.disabled ? "🔒 Locked" : item.hits + " hits · " + (levelNumber === 8 ? "1 sec" : "30 sec")) + "</small>";
+        button.addEventListener("click", () => startGame(levelNumber));
+        container.appendChild(button);
+      });
+    }
+
+    function showLevels() {
+      clearInterval(timer);
+      timer = null;
+      renderLevels();
+      showView("levels");
+    }
+
+    function renderTools() {
+      const container = $("toolCards");
+      container.replaceChildren();
+      Object.entries(tools).forEach(([id, item]) => {
+        const card = document.createElement("div");
+        const button = document.createElement("button");
+        const description = document.createElement("small");
+        const isOwned = owned[id];
+        button.className = "button tool-card" + (selectedTool === id ? " selected" : "");
+        button.setAttribute("aria-pressed", String(selectedTool === id));
+        button.innerHTML = '<span class="tool-icon">' + item.icon + '</span><strong>' + item.name + '</strong>';
+        description.textContent = isOwned ? (selectedTool === id ? "Equipped" : "Owned · select")
+          : item.price.toLocaleString() + " coins";
+        button.appendChild(description);
+        button.addEventListener("click", () => {
+          if (owned[id]) {
+            selectedTool = id;
+            $("shopMessage").textContent = item.name + " equipped!";
+            saveProgress();
+          } else if (coins >= item.price) {
+            coins -= item.price;
+            owned[id] = true;
+            selectedTool = id;
+            $("shopMessage").textContent = item.name + " purchased and equipped!";
+            updateCoins();
+          } else {
+            $("shopMessage").textContent = "Not enough coins for the " + item.name + ".";
+          }
+          renderTools();
+          updateGameUI();
+        });
+        card.appendChild(button);
+        container.appendChild(card);
+      });
+      $("shopCoins").textContent = coins.toLocaleString();
+    }
+
+    function showShop(fromGame = false) {
+      clearInterval(timer);
+      timer = null;
+      shopReturnToGame = fromGame;
+      $("shopMessage").textContent = "";
+      renderTools();
+      showView("shop");
+    }
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        time = Math.max(0, time - 1);
+        updateGameUI();
+        if (time === 0) finish(false);
+      }, 1000);
+    }
+
+    function renderTarget() {
+      const artwork = levels[level - 1].art;
+      $("target").innerHTML = '<svg viewBox="0 0 240 240" aria-hidden="true"><use href="assets/target-art.svg#'
+        + artwork + '"></use></svg>';
+    }
+
+    function startGame(which = level) {
+      if (!Number.isInteger(which) || which < 1 || which > unlocked) return;
+      level = which;
+      hits = 0;
+      time = level === 8 ? 1 : 30;
+      finished = false;
+      hasGameToResume = true;
+      cooldownUntil = 0;
+      clearTimeout(cooldownTimer);
+      renderTarget();
+      $("target").classList.remove("is-damaged");
+      $("levelName").textContent = "Level " + level + ": " + levels[level - 1].name;
+      $("goal").textContent = levels[level - 1].hits;
+      $("message").textContent = "Break the target before time runs out!";
+      showView("game");
+      updateGameUI();
+      startTimer();
+    }
+
+    function updateGameUI() {
+      const goal = levels[level - 1].hits;
+      const progress = Math.min(100, Math.floor(hits / goal * 100));
+      $("time").textContent = time;
+      $("hits").textContent = hits;
+      $("equippedTool").textContent = tools[selectedTool].name;
+      $("progressFill").style.width = progress + "%";
+      $("progressFill").parentElement.setAttribute("aria-valuenow", String(progress));
+      $("hitButton").disabled = finished || Date.now() < cooldownUntil;
+      $("hitButton").textContent = $("hitButton").disabled && !finished
+        ? "⏳ " + Math.max(1, Math.ceil((cooldownUntil - Date.now()) / 1000)) + "s"
+        : tools[selectedTool].icon + " HIT!";
+      updateCoins(false);
+    }
+
+    function hit() {
+      if (finished || $("game").classList.contains("hidden") || Date.now() < cooldownUntil) return;
+      const item = tools[selectedTool];
+      cooldownUntil = Date.now() + item.cooldown;
+      hits++;
+      coins += 10;
+      $("target").classList.toggle("is-damaged", hits >= levels[level - 1].hits / 2);
+      $("target").classList.remove("cracked");
+      void $("target").offsetWidth;
+      $("target").classList.add("cracked");
+      $("message").textContent = hits >= levels[level - 1].hits / 2 ? "CRACK! Keep going!" : "Nice hit! +10 coins";
+      updateGameUI();
+      saveProgress();
+      if (hits >= levels[level - 1].hits) {
+        finish(true);
+        return;
+      }
+      clearTimeout(cooldownTimer);
+      if (item.cooldown > 0) {
+        cooldownTimer = setTimeout(updateGameUI, item.cooldown);
+      }
+    }
+
+    function finish(won) {
+      if (finished) return;
+      finished = true;
+      clearInterval(timer);
+      timer = null;
+      hasGameToResume = false;
+      showView("result");
+      if (won) {
+        const reward = levels[level - 1].reward;
+        coins += reward;
+        unlocked = Math.max(unlocked, Math.min(levels.length, level + 1));
+        $("resultTitle").textContent = "🎉 LEVEL CLEARED!";
+        $("resultText").textContent = "You earned " + reward.toLocaleString() + " bonus coins. Level " + unlocked + " is unlocked!";
+      } else {
+        $("resultTitle").textContent = "⏰ TIME'S UP!";
+        $("resultText").textContent = "You landed " + hits + " of " + levels[level - 1].hits + " hits. Upgrade your tool and try again!";
+      }
+      updateCoins();
+    }
+
+    $("startButton").addEventListener("click", () => startGame());
+    $("levelsButton").addEventListener("click", showLevels);
+    $("menuShopButton").addEventListener("click", () => showShop(false));
+    $("resumeButton").addEventListener("click", () => {
+      showView("game");
+      startTimer();
+      updateGameUI();
+    });
+    $("hitButton").addEventListener("click", hit);
+    $("gameShopButton").addEventListener("click", () => showShop(true));
+    $("gameMenuButton").addEventListener("click", showMenu);
+    $("levelsBackButton").addEventListener("click", showMenu);
+    $("shopBackButton").addEventListener("click", () => {
+      if (shopReturnToGame && hasGameToResume) {
+        showView("game");
+        startTimer();
+        updateGameUI();
+      } else {
+        showMenu();
+      }
+    });
+    $("retryButton").addEventListener("click", () => startGame(level));
+    $("resultMenuButton").addEventListener("click", showMenu);
+    document.addEventListener("keydown", event => {
+      if ((event.code === "Space" || event.code === "Enter")
+        && !$("game").classList.contains("hidden")
+        && event.target !== $("hitButton")) {
+        event.preventDefault();
+        hit();
+      }
+    });
+
+    loadProgress();
+    updateCoins();
+  </script>
+</body>
+</html>
