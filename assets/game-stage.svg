@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 460">
+  <defs>
+    <linearGradient id="deskTop" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#f8c779"/>
+      <stop offset="1" stop-color="#bb713f"/>
+    </linearGradient>
+    <linearGradient id="deskFront" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#c77c48"/>
+      <stop offset="1" stop-color="#884a35"/>
+    </linearGradient>
+    <style>
+      .hammer-swing {
+        transform-box: fill-box;
+        transform-origin: 82% 86%;
+        animation: swing .52s ease-in-out infinite alternate;
+      }
+      .player-bob { animation: player-bob .8s ease-in-out infinite alternate; }
+      @keyframes swing { to { transform: rotate(25deg); } }
+      @keyframes player-bob { to { transform: translateY(-4px); } }
+      @media (prefers-reduced-motion: reduce) {
+        .hammer-swing, .player-bob { animation: none; }
+      }
+    </style>
+  </defs>
+
+  <path d="M0 375q230-35 500 0t500-4v89H0Z" fill="#33214c" opacity=".8"/>
+  <path d="M0 405q250-19 500 0t500-3" fill="none" stroke="#a98bbf" stroke-width="4" opacity=".3"/>
+  <ellipse cx="507" cy="408" rx="415" ry="25" fill="#150b2b" opacity=".34"/>
+  <circle cx="790" cy="151" r="115" fill="#ffe59a" opacity=".08"/>
+
+  <g class="player-bob" fill="none" stroke="#17131b" stroke-width="17" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="788" cy="83" r="34" stroke-width="15"/>
+    <path d="M781 118q-14 55-17 116"/>
+    <path d="m777 153-105 3-105-2"/>
+    <path d="m781 154 42 39-12 41"/>
+    <path d="m764 268-57 43-20 29m78-72 47 39 34 8"/>
+    <path d="m685 340-22 2m157-34 23 5" stroke-width="12"/>
+    <circle cx="568" cy="154" r="9" fill="#17131b" stroke="none"/>
+  </g>
+  <g class="hammer-swing">
+    <path d="M556 111v48" stroke="#49352c" stroke-width="15" stroke-linecap="round"/>
+    <path d="M487 112q15-24 42-19l22 5 8-5q10-2 10 9v14H487Z" fill="#17131b"/>
+    <path d="M500 105q15-12 34-7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".2"/>
+  </g>
+  <path d="M498 83q20-22 47-17m-57 47q-17 12-19 31" fill="none" stroke="#ffd84d" stroke-width="5" stroke-linecap="round" opacity=".75"/>
+  <path d="M590 203q30-26 60-25m-41 39q19-13 37-11" fill="none" stroke="#f4dcff" stroke-width="5" stroke-linecap="round" opacity=".6"/>
+
+  <path d="M123 293v115h56V319m645 0v89h57V293" fill="#8f4e35" stroke="#683b32" stroke-width="9" stroke-linejoin="round"/>
+  <path d="M106 312q0-12 15-12h758q15 0 15 12v78q0 14-15 14H121q-15 0-15-14Z" fill="url(#deskFront)" stroke="#683b32" stroke-width="9"/>
+  <path d="M132 324h255v55H132Z" fill="#d99356" stroke="#774732" stroke-width="6"/>
+  <path d="M407 324h255v55H407Z" fill="#d99356" stroke="#774732" stroke-width="6"/>
+  <path d="M682 324h183v55H682Z" fill="#d99356" stroke="#774732" stroke-width="6"/>
+  <rect x="232" y="344" width="56" height="13" rx="7" fill="#f3c574" stroke="#754632" stroke-width="5"/>
+  <rect x="508" y="344" width="56" height="13" rx="7" fill="#f3c574" stroke="#754632" stroke-width="5"/>
+  <rect x="747" y="344" width="56" height="13" rx="7" fill="#f3c574" stroke="#754632" stroke-width="5"/>
+  <path d="M86 287q0-15 18-15h792q18 0 18 15v20q0 13-18 13H104q-18 0-18-13Z" fill="url(#deskTop)" stroke="#683b32" stroke-width="9"/>
+  <path d="M112 289h774" stroke="#ffe0a2" stroke-width="6" stroke-linecap="round" opacity=".75"/>
+
+  <g fill="#ffd84d" opacity=".9">
+    <path d="m624 104 5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/>
+    <path d="m929 224 4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+    <path d="m84 193 4 9 9 4-9 4-4 9-4-9-9-4 9-4z"/>
+  </g>
+</svg>

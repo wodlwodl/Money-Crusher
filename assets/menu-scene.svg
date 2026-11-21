@@ -8,10 +8,6 @@
       <stop stop-color="#b9f08a"/>
       <stop offset="1" stop-color="#55b978"/>
     </linearGradient>
-    <linearGradient id="hammer" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#ffdc72"/>
-      <stop offset="1" stop-color="#e58a31"/>
-    </linearGradient>
     <style>
       .rain { transform-box: fill-box; transform-origin: center; animation: fall 4s linear infinite; }
       .rain.slow { animation-duration: 5.2s; }
@@ -118,21 +114,16 @@
     <path d="M354 297q10 10 21 0" fill="none" stroke="#ad526c" stroke-width="5" stroke-linecap="round"/>
   </g>
 
-  <g class="chase" stroke="#fff6e8" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="760" cy="145" r="30" fill="#ffe5c0" stroke="#fff6e8" stroke-width="7"/>
-    <path d="M749 144q3-4 6 0m14 0q3-4 6 0" fill="none" stroke="#493154" stroke-width="5"/>
-    <path d="M760 152q8 8 15 0" fill="none" stroke="#493154" stroke-width="5"/>
-    <path d="M747 183q-19 37 2 72" fill="none"/>
-    <path d="m753 202-48-21-31 13" fill="none"/>
-    <path d="m757 202 45-17 28-34" fill="none"/>
-    <path d="m749 254-37 44-28 24" fill="none"/>
-    <path d="m754 254 38 40 36 11" fill="none"/>
-    <path d="M689 323h-28m169-18 27 9" fill="none" stroke-width="10"/>
-    <g transform="rotate(18 826 132)">
-      <path d="m824 139-9-54" fill="none" stroke="#9b5b39" stroke-width="12"/>
-      <rect x="789" y="66" width="68" height="29" rx="9" fill="url(#hammer)" stroke="#713c3d" stroke-width="7"/>
-      <path d="M802 73h42" stroke="#fff0bb" stroke-width="5" opacity=".8"/>
-    </g>
+  <g class="chase" fill="none" stroke="#17131b" stroke-width="14" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="760" cy="145" r="30" stroke-width="14"/>
+    <path d="M758 176q-18 38-9 78"/>
+    <path d="m755 202-91-6-88 1"/>
+    <path d="m757 203 44 24 11 31"/>
+    <path d="m750 254-37 44-28 24m64-67 38 40 36 11"/>
+    <path d="M689 323h-28m169-18 27 9" stroke-width="10"/>
+    <circle cx="576" cy="197" r="8" fill="#17131b" stroke="none"/>
+    <path d="M574 191v-49" stroke-width="12"/>
+    <path d="M520 144q11-20 34-16l19 4 7-4q9-2 9 8v12h-69Z" fill="#17131b"/>
   </g>
 
   <g fill="#ffd84d" opacity=".9">
