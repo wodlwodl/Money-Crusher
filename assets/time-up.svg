@@ -1,64 +1,87 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 500">
   <defs>
-    <linearGradient id="dress" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#ff9d8b"/>
-      <stop offset="1" stop-color="#d95171"/>
+    <linearGradient id="gameOverSign" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#ffabbc"/>
+      <stop offset="1" stop-color="#ef6682"/>
     </linearGradient>
-    <linearGradient id="apron" x1="0" y1="0" x2="0" y2="1">
-      <stop stop-color="#fff0bd"/>
-      <stop offset="1" stop-color="#eacb8d"/>
+    <linearGradient id="deskTop" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#faf5e8"/>
+      <stop offset="1" stop-color="#ded0ba"/>
     </linearGradient>
     <style>
-      .slipper { transform-box: fill-box; transform-origin: 0% 50%; animation: swat .42s ease-in-out infinite alternate; }
-      .stars { transform-box: fill-box; transform-origin: center; animation: dizzy .8s ease-in-out infinite alternate; }
-      @keyframes swat { to { transform: rotate(12deg) translateX(8px); } }
+      .rage { animation: rage .5s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+      .dizzy { animation: dizzy .8s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+      @keyframes rage { to { transform: translateY(-4px) rotate(4deg); } }
       @keyframes dizzy { to { transform: rotate(12deg) scale(1.08); } }
-      @media (prefers-reduced-motion: reduce) { .slipper, .stars { animation: none; } }
+      @media (prefers-reduced-motion: reduce) { .rage, .dizzy { animation: none; } }
     </style>
   </defs>
 
-  <path d="M75 299q215-20 425 0t425-2" fill="none" stroke="#d7bbf0" stroke-width="4" stroke-linecap="round" opacity=".42"/>
-  <ellipse cx="505" cy="314" rx="340" ry="17" fill="#180b31" opacity=".25"/>
-  <path d="m584 45 14 29 32 5-23 23 5 32-28-15-28 15 5-32-23-23 32-5z" fill="#ffcf4f" stroke="#a86422" stroke-width="6" stroke-linejoin="round"/>
-  <text x="584" y="98" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" font-weight="1000" fill="#7a3d32">BOP!</text>
+  <rect x="3" y="3" width="994" height="494" rx="8" fill="#fff" stroke="#d7c6f4" stroke-width="6"/>
 
-  <g stroke="#743b48" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M245 200q-67 10-79 86h247q-12-75-78-86Z" fill="url(#dress)"/>
-    <path d="m242 218 49 25 48-25 16 68H221Z" fill="url(#apron)"/>
-    <path d="m251 207 40 33 39-33" fill="none" stroke="#d9aa67" stroke-width="6"/>
-    <path d="m220 280-11 25m159-25 13 25" fill="none"/>
-    <path d="M252 287h22m42 0h22" stroke="#fff0bd" stroke-width="6"/>
-    <path d="m222 299-10 8m172-8 12 8" fill="none" stroke-width="9"/>
-    <path d="M244 112q-5-61 49-66 53 2 58 57l-14 40h-79Z" fill="#624044"/>
-    <circle cx="292" cy="115" r="48" fill="#ffd7ae"/>
-    <path d="M246 101q12-58 66-48 38 7 42 46-22-17-40-35-23 31-68 37Z" fill="#624044"/>
-    <circle cx="276" cy="116" r="4" fill="#453342" stroke="none"/>
-    <circle cx="308" cy="116" r="4" fill="#453342" stroke="none"/>
-    <path d="m266 102 17-5m18 0 17 5" fill="none" stroke-width="5"/>
-    <path d="M283 135q11-7 21 0" fill="none" stroke-width="5"/>
-    <circle cx="335" cy="67" r="21" fill="#624044"/>
-    <path d="M263 155q28 20 57 0" fill="none" stroke="#e99182" stroke-width="6"/>
-    <path d="M242 191q-47 21-48 66" fill="none" stroke="#ffd7ae" stroke-width="17"/>
-    <path d="M339 189q48-28 93-57" fill="none" stroke="#ffd7ae" stroke-width="17"/>
-    <circle cx="433" cy="131" r="10" fill="#ffd7ae"/>
-  </g>
-  <g class="slipper">
-    <path d="M426 132q34-37 72-21 17 8 14 26-4 17-29 17h-59q-17 0-13-12 3-7 15-10Z" fill="#7750bd" stroke="#402c68" stroke-width="8" stroke-linejoin="round"/>
-    <path d="M449 128q18-15 37-3" fill="none" stroke="#c6a9ff" stroke-width="6" stroke-linecap="round"/>
+  <g fill="#211923" font-family="system-ui, sans-serif">
+    <text x="143" y="75" font-size="46" font-weight="650">X-X</text>
+    <text x="500" y="70" text-anchor="middle" font-size="42" font-weight="650">TIMER</text>
+    <text x="500" y="112" text-anchor="middle" font-size="28" font-weight="850">00:00</text>
   </g>
 
-  <g fill="none" stroke="#17131b" stroke-width="13" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="724" cy="164" r="30" stroke-width="13"/>
-    <path d="M716 197q-29 34-28 85m36-82q34 25 47 63" fill="none"/>
-    <path d="m693 218-43 29m74-28 35 24" fill="none"/>
-    <path d="m689 280-29 30m82-27 31 25" fill="none" stroke-width="10"/>
-    <path d="M643 311h-19m160 0h18" fill="none" stroke-width="9"/>
+  <g transform="translate(740 25)">
+    <rect x="3" y="8" width="146" height="66" rx="17" fill="#c74a65" stroke="#392b3a" stroke-width="5"/>
+    <path d="M17 15h18v13H17zm0 22h18v13H17zm0 22h18v8H17zm101-44h18v13h-18zm0 22h18v13h-18zm0 22h18v8h-18z" fill="#70c69a" stroke="#392b3a" stroke-width="3"/>
+    <rect x="31" y="14" width="90" height="51" rx="5" fill="url(#gameOverSign)" stroke="#392b3a" stroke-width="5"/>
+    <text x="76" y="36" text-anchor="middle" fill="#211923" font-family="system-ui, sans-serif" font-size="20" font-weight="1000" letter-spacing="2">GAME</text>
+    <text x="76" y="57" text-anchor="middle" fill="#211923" font-family="system-ui, sans-serif" font-size="20" font-weight="1000" letter-spacing="2">OVER</text>
   </g>
-  <g class="stars" fill="#ffd84d" stroke="#9e6629" stroke-width="4" stroke-linejoin="round">
-    <path d="m789 99 8 17 19 2-14 13 4 19-17-10-17 10 4-19-14-13 19-2z"/>
-    <path d="m846 139 5 11 12 2-9 8 3 12-11-6-10 6 2-12-9-8 12-2z"/>
-    <path d="m809 65 4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1z"/>
+
+  <g transform="translate(744 133)">
+    <path d="M16 5 31 16 46 5v21L31 38 16 26Z" fill="#fa6072" stroke="#503545" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M31 38v11m-7-6 7 6 7-6" fill="none" stroke="#503545" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="48" y="9" width="151" height="24" rx="12" fill="#92859a" stroke="#503545" stroke-width="5"/>
+    <rect x="53" y="14" width="140" height="14" rx="7" fill="#fff"/>
+    <path d="M58 14h9v14h-9z" fill="#f35a68"/>
   </g>
-  <path d="M93 133q23-29 56-10m-64 45q19-19 39-13" fill="none" stroke="#fff0bd" stroke-width="6" stroke-linecap="round" opacity=".8"/>
-  <path d="M887 230q22-22 49-5m-37 28q17-13 34-8" fill="none" stroke="#fff0bd" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+
+  <path d="M61 456h879" stroke="#e8e2eb" stroke-width="4"/>
+
+  <g stroke="#19151a" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <circle cx="231" cy="279" r="44" stroke-width="5"/>
+    <path d="m202 263 14 14m0-14-14 14m36-14 14 14m0-14-14 14" stroke-width="6"/>
+    <path d="m211 297 18-8 19 8-18 10Z" fill="#211923" stroke-width="3"/>
+    <path d="M232 323q-17 32-13 79" stroke-width="14"/>
+    <path d="m220 345-36 29-19 27m50-55 39 28 17 26" stroke-width="13"/>
+    <path d="m219 401-12 43m16-42 14 42m-14-2h-19m33 0h-19" stroke-width="11"/>
+    <circle cx="163" cy="403" r="8" fill="#19151a" stroke-width="5"/>
+    <path d="M271 399 293 371" stroke-width="10"/>
+  </g>
+  <g transform="rotate(13 309 375)">
+    <rect x="285" y="351" width="48" height="51" rx="4" fill="#fff" stroke="#25202a" stroke-width="4"/>
+    <path d="M294 364h30m-30 9h23" stroke="#d4c9d7" stroke-width="3"/>
+  </g>
+  <g class="rage" fill="none" stroke="#c92a43" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m177 227 24-19-13-15m39 24 20-23-8-16"/>
+    <path d="m187 246 20-8 15 13"/>
+  </g>
+
+  <g class="dizzy" stroke="#19151a" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="506" cy="333" r="35" fill="#fff5df" stroke-width="5"/>
+    <path d="m488 322 9 9m0-9-9 9m23-9 9 9m0-9-9 9" fill="none" stroke-width="4"/>
+    <path d="M496 343q9-8 17 2l-5 10q-11 0-12-12Z" fill="#e77175" stroke-width="3"/>
+    <path d="m491 365-26 41m32-38 39 40" fill="none" stroke-width="12"/>
+    <path d="m477 390-44 13-27-4m99 8 50 18 23-8" fill="none" stroke-width="12"/>
+    <path d="m459 406-30 38m77-36-16 40m16-40 42 39m8-21 35 15" fill="none" stroke-width="11"/>
+    <ellipse cx="424" cy="449" rx="14" ry="23" transform="rotate(-27 424 449)" fill="#f1e7d2" stroke-width="4"/>
+    <ellipse cx="620" cy="421" rx="14" ry="22" transform="rotate(27 620 421)" fill="#f1e7d2" stroke-width="4"/>
+  </g>
+  <g class="dizzy" fill="none" stroke-linecap="round">
+    <path d="m439 315-24-14m35-13-13-24m100 28 14-24m6 42 25-11m-132 93-20 10m147-6 17 14" stroke="#e5674f" stroke-width="5"/>
+    <path d="m447 337-27-4m157-18 27-2m-126 112-17 22m108-10 15 20" stroke="#6b8eb4" stroke-width="5"/>
+  </g>
+
+  <g>
+    <path d="M728 423V379h25v44m203 0V379h25v44" fill="#b98c67" stroke="#8c6954" stroke-width="4" stroke-linejoin="round"/>
+    <path d="m702 380 24-33h233l26 33q1 7-8 7H710q-9 0-8-7Z" fill="url(#deskTop)" stroke="#9c7760" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M720 382h244" stroke="#fff" stroke-width="3" opacity=".8"/>
+    <path d="M750 391v43m182-43v43" stroke="#d2b69a" stroke-width="4"/>
+    <path d="M697 444h266" stroke="#8c6954" stroke-width="4" stroke-linecap="round"/>
+  </g>
 </svg>

@@ -8,24 +8,22 @@
   <title>Money Crusher — Clicker Arcade</title>
   <style>
     :root {
-      color-scheme: dark;
+      color-scheme: light;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #fff9e8;
-      background: #241044;
+      color: #26202b;
+      background: #fff;
       font-synthesis: none;
       text-rendering: optimizeLegibility;
       --gold: #ffd84d;
       --orange: #ff9d27;
-      --panel: rgba(57, 31, 99, .94);
-      --muted: #d6c9ed;
+      --panel: #fff;
+      --muted: #655d69;
     }
     * { box-sizing: border-box; }
     body {
       min-width: 320px;
       margin: 0;
-      background:
-        radial-gradient(ellipse at 50% -10%, rgba(181, 111, 255, .48), transparent 50%),
-        linear-gradient(145deg, #26104c, #48206e 55%, #241044);
+      background: #fff;
     }
     button { font: inherit; }
     .app {
@@ -45,19 +43,18 @@
     }
     .brand {
       margin: 0;
-      color: var(--gold);
+      color: #523079;
       font-size: clamp(1.35rem, 5vw, 2rem);
       font-weight: 1000;
       letter-spacing: .04em;
-      text-shadow: 0 3px 0 #9c511b;
     }
     .coin-pill {
       flex: 0 0 auto;
       padding: 9px 14px;
-      border: 2px solid rgba(255, 216, 77, .7);
+      border: 2px solid #e8c65b;
       border-radius: 999px;
-      background: rgba(40, 19, 69, .75);
-      color: var(--gold);
+      background: #fff9e7;
+      color: #785400;
       font-weight: 800;
     }
     .panel {
@@ -68,12 +65,12 @@
       justify-content: center;
       width: 100%;
       padding: clamp(20px, 5vw, 34px);
-      border: 2px solid rgba(255, 216, 77, .8);
+      border: 1px solid #e9e3eb;
       border-right: 0;
       border-left: 0;
       border-radius: 0;
       background: var(--panel);
-      box-shadow: 0 16px 40px rgba(13, 5, 28, .32), inset 0 1px rgba(255, 255, 255, .08);
+      box-shadow: none;
       text-align: center;
     }
     h2 { margin: 0 0 10px; font-size: clamp(1.4rem, 4vw, 1.8rem); }
@@ -125,6 +122,72 @@
       font-weight: 750;
     }
     .stats span { color: var(--gold); }
+    #game.panel {
+      justify-content: flex-start;
+      gap: 12px;
+      background: #fff;
+      color: #17131b;
+      border-color: #e8dfcc;
+      box-shadow: none;
+    }
+    #game h2 { margin: 0; color: #30243c; }
+    .game-hud {
+      display: grid;
+      width: min(100%, 1120px);
+      grid-template-columns: 1fr auto 1fr;
+      align-items: start;
+      margin: 8px auto 0;
+    }
+    .hud-block {
+      display: grid;
+      justify-items: center;
+      gap: 2px;
+      color: #241a2d;
+      line-height: 1.1;
+    }
+    .hud-label {
+      color: #6b6171;
+      font-size: clamp(.74rem, 2vw, .95rem);
+      font-weight: 850;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .warning-indicator {
+      justify-self: start;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 44px;
+      padding: 8px 12px;
+      border: 2px solid #e8dfcc;
+      border-radius: 12px;
+      color: #766b7b;
+      font-size: clamp(.72rem, 2vw, .9rem);
+      font-weight: 900;
+      letter-spacing: .08em;
+    }
+    .warning-icon { color: #f0ad37; font-size: 1.3rem; }
+    .warning-indicator.urgent {
+      border-color: #ef6a62;
+      background: #fff0ed;
+      color: #a52e32;
+      animation: warning-pulse .7s ease-in-out infinite alternate;
+    }
+    .timer-display {
+      min-width: 90px;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      font-variant-numeric: tabular-nums;
+      font-weight: 950;
+      letter-spacing: -.06em;
+    }
+    .timer-display small { font-size: .4em; letter-spacing: 0; }
+    .goal-display {
+      justify-self: end;
+      min-width: 76px;
+      font-size: clamp(1.7rem, 5vw, 2.5rem);
+      font-variant-numeric: tabular-nums;
+      font-weight: 900;
+    }
     .progress-track {
       width: min(100%, 1000px);
       height: 12px;
@@ -140,35 +203,105 @@
       background: linear-gradient(90deg, #ff9d27, #ffe15a);
       transition: width .2s ease;
     }
+    .stage-money {
+      position: absolute;
+      z-index: 3;
+      top: 5%;
+      right: 4%;
+      display: grid;
+      width: 35%;
+      justify-items: center;
+      gap: 7px;
+      color: #211a24;
+    }
+    .stage-money-label {
+      font-size: clamp(1.1rem, 3.5vw, 2rem);
+      font-weight: 850;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .stage-money-value {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: clamp(.9rem, 2.5vw, 1.35rem);
+      font-weight: 850;
+      font-variant-numeric: tabular-nums;
+    }
+    .stage-health {
+      display: flex;
+      width: min(100%, 230px);
+      align-items: center;
+      gap: 7px;
+    }
+    .stage-health-heart { color: #ef5264; font-size: 1.25rem; line-height: 1; }
+    .stage-health .progress-track {
+      height: 12px;
+      margin: 0;
+      border: 1px solid #4d3b50;
+      background: #fff;
+    }
+    .stage-health .progress-fill {
+      background: linear-gradient(90deg, #ef5264, #ff8b79);
+      transition: width .35s ease;
+    }
     .battle-stage {
       position: relative;
-      width: min(100%, 900px);
-      min-height: 180px;
+      width: min(100%, 1120px);
+      min-height: clamp(230px, 48vh, 500px);
       aspect-ratio: 1000 / 460;
       overflow: hidden;
-      margin: 8px auto 4px;
-      border: 2px solid rgba(255, 216, 77, .35);
-      border-radius: 22px;
-      background:
-        radial-gradient(ellipse at 70% 20%, rgba(255, 226, 151, .2), transparent 42%),
-        linear-gradient(180deg, #5b4080, #34204f);
-      box-shadow: inset 0 0 35px rgba(20, 10, 39, .24), 0 12px 28px rgba(13, 5, 28, .2);
+      margin: 0 auto;
+      border: 1px solid #eee6d9;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fff 0%, #fff 66%, #faf6ef 100%);
     }
     .battle-stage-art {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: fill;
+      overflow: hidden;
+      shape-rendering: geometricPrecision;
     }
+    .battle-stage.hit { animation: stage-impact .32s ease-out; }
+    .battle-stage.hit .player-body { animation: player-strike .32s ease-out; }
+    .battle-stage.hit .swing-arm { animation: arm-bend .32s cubic-bezier(.2, .75, .3, 1); }
+    .battle-stage.hit .held-tool { animation: hammer-strike .32s cubic-bezier(.3, 0, .6, 1); }
+    .battle-stage.hit .impact-sparks { animation: impact-sparks .32s ease-out; }
+    .battle-character {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+      shape-rendering: geometricPrecision;
+    }
+    .player-body, .swing-arm, .held-tool { transform-box: view-box; }
+    .swing-arm { transform-origin: 715px 159px; }
+    .held-tool { display: none; transform-origin: 660px 154px; }
+    .battle-stage.tool-hammer .held-hammer,
+    .battle-stage.tool-pin .held-pin,
+    .battle-stage.tool-drill .held-drill,
+    .battle-stage.tool-jackhammer .held-jackhammer { display: block; }
+    .impact-sparks { transform-box: view-box; transform-origin: 798px 218px; opacity: 0; }
+    .face-nervous, .face-panicked { opacity: 0; }
+    .battle-stage.nervous .face-normal { opacity: 0; }
+    .battle-stage.nervous .face-nervous { opacity: 1; }
+    .battle-stage.panicked .face-nervous { opacity: 0; }
+    .battle-stage.panicked .face-panicked { opacity: 1; }
+    .face-normal, .face-nervous, .face-panicked { transition: opacity .2s ease; }
     .target {
       isolation: isolate;
       display: grid;
       position: absolute;
-      left: 22%;
-      bottom: 27%;
-      width: clamp(100px, 18vmin, 200px);
-      height: clamp(100px, 18vmin, 200px);
+      z-index: 2;
+      left: 69%;
+      bottom: 39%;
+      width: clamp(100px, 25vmin, 215px);
+      height: clamp(100px, 25vmin, 215px);
       place-items: center;
       margin: 0;
       user-select: none;
@@ -181,6 +314,7 @@
       height: 100%;
       overflow: visible;
       filter: drop-shadow(0 7px 5px rgba(17, 7, 34, .35));
+      shape-rendering: geometricPrecision;
     }
     .target.is-damaged::after {
       position: absolute;
@@ -189,11 +323,47 @@
       content: "";
       background: url("assets/crack.svg") center / 82% 82% no-repeat;
       filter: drop-shadow(0 2px 2px rgba(17, 7, 34, .55));
-      animation: pop .24s ease-out;
+      animation: crack-in .38s cubic-bezier(.18, .8, .25, 1) both;
       pointer-events: none;
     }
-    .target.cracked { animation: shake .22s ease-in-out; }
+    .target.cracked { animation: shake .32s ease-in-out; }
+    .target.cracked svg { animation: target-impact .32s ease-out; }
     @keyframes bob { 50% { transform: translateY(-7px) rotate(2deg); } }
+    @keyframes stage-impact {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-6px); }
+      48% { transform: translateX(5px); }
+      70% { transform: translateX(-2px); }
+    }
+    @keyframes player-strike {
+      0%, 100% { transform: translate(0, 0); }
+      35% { transform: translate(-8px, -3px); }
+      65% { transform: translate(3px, 2px); }
+    }
+    @keyframes arm-bend {
+      0%, 100% { transform: rotate(0); }
+      34% { transform: rotate(-29deg); }
+      61% { transform: rotate(-12deg); }
+    }
+    @keyframes hammer-strike {
+      0%, 100% { transform: rotate(0); }
+      40% { transform: rotate(23deg); }
+      68% { transform: rotate(-7deg); }
+    }
+    @keyframes impact-sparks {
+      0%, 100% { opacity: 0; transform: scale(.35); }
+      35%, 65% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes target-impact {
+      0%, 100% { transform: scale(1) rotate(0); }
+      30% { transform: scale(1.13, .86) rotate(-5deg); }
+      62% { transform: scale(.93, 1.08) rotate(3deg); }
+    }
+    @keyframes crack-in {
+      0% { opacity: 0; transform: scale(.65) rotate(-10deg); }
+      65% { opacity: 1; transform: scale(1.08) rotate(2deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
     @keyframes pop {
       from { opacity: 0; transform: scale(.4) rotate(-18deg); }
       to { opacity: 1; transform: scale(1) rotate(0); }
@@ -202,17 +372,17 @@
       25% { transform: translateX(-8px) rotate(-5deg); }
       75% { transform: translateX(8px) rotate(5deg); }
     }
-    .game-message { min-height: 28px; margin: 12px 0; color: #ffe77b; font-weight: 750; }
-    .game-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .game-message { min-height: 24px; margin: 0; color: #51465a; font-weight: 750; }
+    .game-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
     .tool-grid { margin: 20px 0; }
     .tool-card { display: grid; gap: 5px; justify-items: center; min-height: 104px; }
     .tool-icon { font-size: 1.5rem; }
-    .shop-note { min-height: 24px; margin-bottom: 0; color: #ffe77b; }
-    .notice { min-height: 22px; margin: 12px 0 0; color: #ffe77b; font-size: .9rem; }
+    .shop-note { min-height: 24px; margin-bottom: 0; color: #795b00; }
+    .notice { min-height: 22px; margin: 12px 0 0; color: #795b00; font-size: .9rem; }
     .failure-scene {
       display: none;
-      width: min(100%, 760px);
-      height: clamp(150px, 25vh, 260px);
+      width: min(100%, 1000px);
+      height: clamp(240px, 42vh, 420px);
       margin: 0 auto 12px;
       object-fit: contain;
     }
@@ -229,14 +399,21 @@
     .footer {
       margin-top: auto;
       padding: 12px 16px max(12px, env(safe-area-inset-bottom));
-      color: #c6b5df;
+      color: #756b7d;
       font-size: .82rem;
       text-align: center;
     }
     @media (max-width: 440px) {
       .button-grid, .level-grid, .tool-grid { gap: 8px; }
       .panel { padding: 24px 16px; }
-      .battle-stage { min-height: 165px; }
+      .game-hud { margin-top: 0; }
+      .warning-indicator { min-height: 38px; padding: 6px 8px; }
+      .timer-display { min-width: 62px; }
+      .battle-stage { min-height: 230px; aspect-ratio: 1 / .72; }
+      .stage-money { right: 2%; width: 38%; top: 7%; }
+      .stage-health { gap: 4px; }
+      .target { left: 64%; width: clamp(100px, 31vmin, 170px); height: clamp(100px, 31vmin, 170px); }
+      .failure-scene { height: clamp(220px, 40vh, 320px); }
     }
     @media (min-width: 700px) {
       .level-grid, .tool-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -268,17 +445,111 @@
 
     <section id="game" class="panel hidden" aria-labelledby="levelName">
       <h2 id="levelName"></h2>
-      <div class="stats">
-        <div>⏱️ Time: <span id="time">30</span>s</div>
-        <div>🪙 Coins: <span id="gameCoins">0</span></div>
-        <div>Hits: <span id="hits">0</span> / <span id="goal">5</span></div>
-        <div>Tool: <span id="equippedTool">Hammer</span></div>
+      <div class="game-hud">
+        <div id="warningIndicator" class="warning-indicator">
+          <span class="warning-icon" aria-hidden="true">⚠</span>
+          <span>WARNING</span>
+        </div>
+        <div class="hud-block">
+          <span class="hud-label">Timer</span>
+          <strong class="timer-display"><span id="time">30</span><small>s</small></strong>
+          <span class="hud-label">Tool · <span id="equippedTool">Hammer</span></span>
+        </div>
+        <div class="hud-block">
+          <span class="hud-label">Goal</span>
+          <strong class="goal-display"><span id="hits">0</span>/<span id="goal">5</span></strong>
+        </div>
       </div>
-      <div class="progress-track" role="progressbar" aria-label="Target damage" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-        <div id="progressFill" class="progress-fill"></div>
-      </div>
-      <div class="battle-stage" aria-hidden="true">
-        <img class="battle-stage-art" src="assets/game-stage.svg" alt="">
+      <div id="battleStage" class="battle-stage" aria-hidden="true">
+        <svg class="battle-stage-art" viewBox="0 0 1000 460" preserveAspectRatio="none">
+          <use id="sceneArt" href="assets/level-scenes.svg#scene-piggy-bank" x="0" y="0" width="1000" height="460"></use>
+        </svg>
+        <svg class="battle-character" viewBox="0 0 1000 460" aria-hidden="true">
+          <g class="stick-figure" transform="translate(1240 0) scale(-1 1)">
+            <g class="player-body" fill="none" stroke="#17131b" stroke-width="17" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="788" cy="83" r="34" stroke-width="15"/>
+              <path d="M781 118q-14 55-17 116"/>
+              <path d="m781 154 42 39-12 41"/>
+              <path d="m764 268-57 43-20 29m78-72 47 39 34 8"/>
+              <path d="m685 340-22 2m157-34 23 5" stroke-width="12"/>
+              <g class="face-normal" fill="#17131b" stroke="none">
+                <circle cx="777" cy="80" r="3.5"/>
+                <circle cx="797" cy="80" r="3.5"/>
+                <path d="M779 97q9 8 18 0" fill="none" stroke="#17131b" stroke-width="3.5"/>
+              </g>
+              <g class="face-nervous" fill="#17131b" stroke="none">
+                <path d="m771 70 11 3m15 0 11-3" fill="none" stroke="#17131b" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="777" cy="81" r="7" fill="#fff"/>
+                <circle cx="798" cy="81" r="7" fill="#fff"/>
+                <circle cx="779" cy="82" r="3.5"/>
+                <circle cx="800" cy="82" r="3.5"/>
+                <path d="M781 99q7-7 14 0-7 8-14 0Z"/>
+                <path d="M823 75q-8 9 0 15 8-6 0-15Z" fill="#70c9ee" stroke="#397b9c" stroke-width="2"/>
+              </g>
+              <g class="face-panicked" fill="#17131b" stroke="none">
+                <path d="m770 68 12 4m15 0 12-4" fill="none" stroke="#17131b" stroke-width="4" stroke-linecap="round"/>
+                <ellipse cx="777" cy="82" rx="9" ry="11" fill="#fff"/>
+                <ellipse cx="799" cy="82" rx="9" ry="11" fill="#fff"/>
+                <circle cx="780" cy="84" r="4.5"/>
+                <circle cx="802" cy="84" r="4.5"/>
+                <ellipse cx="788" cy="100" rx="6" ry="8"/>
+                <path d="M833 69q-10 11 0 18 10-7 0-18Z" fill="#70c9ee" stroke="#397b9c" stroke-width="2"/>
+                <path d="M754 91q-9 10 0 17 9-7 0-17Z" fill="#70c9ee" stroke="#397b9c" stroke-width="2"/>
+                <path d="M819 109q-7 8 0 13 7-5 0-13Z" fill="#70c9ee" stroke="#397b9c" stroke-width="2"/>
+              </g>
+            </g>
+            <path class="arm-upper" d="m777 153-62 6" fill="none" stroke="#17131b" stroke-width="17" stroke-linecap="round"/>
+            <g class="swing-arm" fill="none" stroke="#17131b" stroke-width="17" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m715 159-55-5"/>
+              <circle cx="660" cy="154" r="9" fill="#17131b" stroke="none"/>
+              <g class="held-tool held-hammer">
+                <g transform="translate(92 0)">
+                  <path d="M556 111v48" stroke="#49352c" stroke-width="15"/>
+                  <path d="M487 112q15-24 42-19l22 5 8-5q10-2 10 9v14H487Z" fill="#17131b" stroke="none"/>
+                  <path d="M500 105q15-12 34-7" stroke="#fff" stroke-width="3" opacity=".3"/>
+                </g>
+              </g>
+              <g class="held-tool held-pin">
+                <g transform="translate(92 0)">
+                  <path d="m536 124 31-4 18 17-17 17-32-3-18-13Z" fill="#e45461" stroke="#8e303d" stroke-width="6"/>
+                  <path d="m517 138-31 16 32-2" fill="#b9c9dc" stroke="#526782" stroke-width="5" stroke-linejoin="round"/>
+                  <circle cx="555" cy="136" r="6" fill="#fff2e4" stroke="none"/>
+                </g>
+              </g>
+              <g class="held-tool held-drill">
+                <g transform="translate(92 0)">
+                  <path d="m493 116 30-20 47 7 8 24-37 14-38-4Z" fill="#49a9a0" stroke="#215f67" stroke-width="7" stroke-linejoin="round"/>
+                  <path d="m493 116-36 19 36 2" fill="#aebdca" stroke="#526782" stroke-width="5" stroke-linejoin="round"/>
+                  <path d="m548 135-3 22 17 2 10-24" fill="#efb743" stroke="#215f67" stroke-width="6" stroke-linejoin="round"/>
+                  <path d="m528 104 31 5" stroke="#c7fff0" stroke-width="4" stroke-linecap="round"/>
+                </g>
+              </g>
+              <g class="held-tool held-jackhammer">
+                <g transform="translate(92 0)">
+                  <path d="m508 105 53-4 12 16-9 24-54 1-13-17Z" fill="#e17b50" stroke="#723d3c" stroke-width="7" stroke-linejoin="round"/>
+                  <path d="m520 141 43-3-10 15-37 3Z" fill="#8297aa" stroke="#465b70" stroke-width="6" stroke-linejoin="round"/>
+                  <path d="m516 111-22 7m67-10 14 7m-61 7 8 14m28-27 4 25" fill="none" stroke="#ffdda0" stroke-width="4"/>
+                  <path d="m532 155-7 12m26-13 6 13" stroke="#465b70" stroke-width="5" stroke-linecap="round"/>
+                </g>
+              </g>
+            </g>
+            <g class="impact-sparks" fill="#ffd84d" stroke="#fff0a3" stroke-width="3">
+              <path d="m402 184 9 25 25 9-25 9-9 25-9-25-25-9 25-9z"/>
+              <path d="m447 204 5 13 13 5-13 5-5 13-5-13-13-5 13-5z"/>
+              <path d="m375 247 4 10 10 4-10 4-4 10-4-10-10-4 10-4z"/>
+            </g>
+          </g>
+        </svg>
+        <div class="stage-money">
+          <div class="stage-health">
+            <span class="stage-health-heart" aria-hidden="true">♥</span>
+            <div class="progress-track" role="progressbar" aria-label="Target health" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+          </div>
+          <span class="stage-money-label">Money</span>
+          <span class="stage-money-value">🪙 <span id="gameCoins">0</span></span>
+        </div>
         <div id="target" class="target"></div>
       </div>
       <p id="message" class="game-message" aria-live="polite">Break the target before time runs out!</p>
@@ -307,7 +578,7 @@
     <section id="result" class="panel hidden" aria-live="polite">
       <h2 id="resultTitle"></h2>
       <p id="resultText"></p>
-      <img class="failure-scene" src="assets/time-up.svg" alt="A cartoon mom bonks the stick figure with a slipper while he sees stars.">
+      <img class="failure-scene" src="assets/time-up.svg" alt="Game over screen: an angry stick figure holds a wallet beside a dizzy stick figure and an empty desk.">
       <img class="win-scene" src="assets/win-scene.svg" alt="The stick figure celebrates by counting a pile of money.">
       <div class="button-grid">
         <button id="retryButton" class="button">TRY AGAIN</button>
@@ -321,20 +592,24 @@
     "use strict";
 
     const levels = [
-      { name: "Piggy Bank", picture: "🐷", art: "piggy-bank", hits: 5, reward: 300 },
-      { name: "Mom's Wallet", picture: "👛", art: "mom-wallet", hits: 6, reward: 400 },
-      { name: "Dad's Wallet", picture: "👝", art: "dad-wallet", hits: 7, reward: 500 },
-      { name: "Teacher's Desk", picture: "🗄️", art: "teacher-desk", hits: 8, reward: 100 },
-      { name: "Safe", picture: "🔐", art: "safe", hits: 9, reward: 100 },
-      { name: "Big Safe", picture: "🏦", art: "big-safe", hits: 10, reward: 600 },
-      { name: "Bank", picture: "🏛️", art: "bank", hits: 12, reward: 100 },
-      { name: "My Wallet", picture: "💼", art: "my-wallet", hits: 999, reward: 100 }
+      { name: "Piggy Bank", picture: "🐷", art: "piggy-bank", scene: "scene-piggy-bank", hits: 5, duration: 30, reward: 100 },
+      { name: "Mom's Wallet", picture: "👛", art: "mom-wallet", scene: "scene-mom-wallet", hits: 6, duration: 30, reward: 200 },
+      { name: "Dad's Wallet", picture: "👝", art: "dad-wallet", scene: "scene-dad-wallet", hits: 7, duration: 30, reward: 300 },
+      { name: "Teacher's Desk", picture: "🗄️", art: "teacher-desk", scene: "scene-teacher-desk", hits: 8, duration: 30, reward: 400 },
+      { name: "Safe", picture: "🔐", art: "safe", scene: "scene-safe", hits: 9, duration: 30, reward: 500 },
+      { name: "Big Safe", picture: "🏦", art: "big-safe", scene: "scene-big-safe", hits: 10, duration: 30, reward: 600 },
+      { name: "Bank", picture: "🏛️", art: "bank", scene: "scene-bank", hits: 12, duration: 30, reward: 700 },
+      { name: "Dragon's Egg", picture: "🐉", art: "dragon-egg", scene: "scene-dragon-egg", hits: 8, duration: 10, hitCooldown: 500, reward: 800 },
+      { name: "Banana Bus", picture: "🍌🚌", displayNumber: "8.5", art: "banana-bus", scene: "scene-banana-bus", hits: 4, duration: 5, hitCooldown: 500, reward: 900 },
+      { name: "Mom's Wallet 2", picture: "👛", displayNumber: "7.1", art: "mom-wallet", scene: "scene-mom-wallet", hits: 20, duration: 20, hitCooldown: 500, reward: 1000 },
+      { name: "Gundam Base Door", picture: "🚪", displayNumber: "7.999999", art: "gundam-base-door", scene: "scene-gundam-base-door", hits: 40, duration: 60, hitCooldown: 500, reward: 1100 },
+      { name: "My Wallet", picture: "💼", art: "my-wallet", scene: "scene-my-wallet", hits: 999, duration: 1, reward: 1200 }
     ];
     const tools = {
       hammer: { name: "Hammer", icon: "🔨", price: 0, cooldown: 5000 },
       pin: { name: "Pin", icon: "📌", price: 500, cooldown: 3000 },
       drill: { name: "Drill", icon: "⚙️", price: 5000, cooldown: 2000 },
-      jackhammer: { name: "Jackhammer", icon: "💥", price: 1000000, cooldown: 0 }
+      jackhammer: { name: "Jackhammer", icon: "💥", price: 200000000000000, cooldown: 0 }
     };
     const storageKey = "money-crusher-progress-v1";
     const $ = id => document.getElementById(id);
@@ -349,6 +624,7 @@
     let time = 30;
     let timer = null;
     let cooldownTimer = null;
+    let impactTimer = null;
     let cooldownUntil = 0;
     let finished = false;
     let shopReturnToGame = false;
@@ -416,8 +692,10 @@
         const button = document.createElement("button");
         button.className = "button secondary level-button";
         button.disabled = levelNumber > unlocked;
-        button.innerHTML = "<strong>" + item.picture + " Level " + levelNumber + "</strong><small>"
-          + (button.disabled ? "🔒 Locked" : item.hits + " hits · " + (levelNumber === 8 ? "1 sec" : "30 sec")) + "</small>";
+        button.innerHTML = "<strong>" + item.picture + " Level " + (item.displayNumber || levelNumber) + ": "
+          + item.name + "</strong><small>"
+          + (button.disabled ? "🔒 Locked" : item.hits + " hits · +" + item.reward.toLocaleString()
+            + " bonus coins · " + item.duration + " sec") + "</small>";
         button.addEventListener("click", () => startGame(levelNumber));
         container.appendChild(button);
       });
@@ -486,7 +764,9 @@
     }
 
     function renderTarget() {
-      const artwork = levels[level - 1].art;
+      const currentLevel = levels[level - 1];
+      const artwork = currentLevel.art;
+      $("sceneArt").setAttribute("href", "assets/level-scenes.svg#" + currentLevel.scene);
       $("target").innerHTML = '<svg viewBox="0 0 240 240" aria-hidden="true"><use href="assets/target-art.svg#'
         + artwork + '"></use></svg>';
     }
@@ -495,14 +775,18 @@
       if (!Number.isInteger(which) || which < 1 || which > unlocked) return;
       level = which;
       hits = 0;
-      time = level === 8 ? 1 : 30;
+      time = levels[level - 1].duration;
       finished = false;
       hasGameToResume = true;
       cooldownUntil = 0;
       clearTimeout(cooldownTimer);
+      clearTimeout(impactTimer);
+      $("battleStage").classList.remove("nervous", "panicked", "hit");
+      $("target").classList.remove("cracked");
       renderTarget();
       $("target").classList.remove("is-damaged");
-      $("levelName").textContent = "Level " + level + ": " + levels[level - 1].name;
+      const currentLevel = levels[level - 1];
+      $("levelName").textContent = "Level " + (currentLevel.displayNumber || level) + ": " + currentLevel.name;
       $("goal").textContent = levels[level - 1].hits;
       $("message").textContent = "Break the target before time runs out!";
       showView("game");
@@ -513,11 +797,17 @@
     function updateGameUI() {
       const goal = levels[level - 1].hits;
       const progress = Math.min(100, Math.floor(hits / goal * 100));
+      $("battleStage").classList.toggle("nervous", time <= 25);
+      $("battleStage").classList.toggle("panicked", time <= 15);
+      $("warningIndicator").classList.toggle("urgent", time <= 15);
+      for (const id of Object.keys(tools)) {
+        $("battleStage").classList.toggle("tool-" + id, selectedTool === id);
+      }
       $("time").textContent = time;
       $("hits").textContent = hits;
       $("equippedTool").textContent = tools[selectedTool].name;
-      $("progressFill").style.width = progress + "%";
-      $("progressFill").parentElement.setAttribute("aria-valuenow", String(progress));
+      $("progressFill").style.width = (100 - progress) + "%";
+      $("progressFill").parentElement.setAttribute("aria-valuenow", String(100 - progress));
       $("hitButton").disabled = finished || Date.now() < cooldownUntil;
       $("hitButton").textContent = $("hitButton").disabled && !finished
         ? "⏳ " + Math.max(1, Math.ceil((cooldownUntil - Date.now()) / 1000)) + "s"
@@ -528,13 +818,23 @@
     function hit() {
       if (finished || $("game").classList.contains("hidden") || Date.now() < cooldownUntil) return;
       const item = tools[selectedTool];
-      cooldownUntil = Date.now() + item.cooldown;
+      const hitCooldown = levels[level - 1].hitCooldown ?? item.cooldown;
+      cooldownUntil = Date.now() + hitCooldown;
       hits++;
       coins += 10;
-      $("target").classList.toggle("is-damaged", hits >= levels[level - 1].hits / 2);
+      const stage = $("battleStage");
+      stage.classList.remove("hit");
       $("target").classList.remove("cracked");
+      void stage.offsetWidth;
+      stage.classList.add("hit");
+      $("target").classList.toggle("is-damaged", hits >= levels[level - 1].hits / 2);
       void $("target").offsetWidth;
       $("target").classList.add("cracked");
+      clearTimeout(impactTimer);
+      impactTimer = setTimeout(() => {
+        stage.classList.remove("hit");
+        $("target").classList.remove("cracked");
+      }, 360);
       $("message").textContent = hits >= levels[level - 1].hits / 2 ? "CRACK! Keep going!" : "Nice hit! +10 coins";
       updateGameUI();
       saveProgress();
@@ -543,8 +843,8 @@
         return;
       }
       clearTimeout(cooldownTimer);
-      if (item.cooldown > 0) {
-        cooldownTimer = setTimeout(updateGameUI, item.cooldown);
+      if (hitCooldown > 0) {
+        cooldownTimer = setTimeout(updateGameUI, hitCooldown);
       }
     }
 
@@ -562,7 +862,11 @@
         coins += reward;
         unlocked = Math.max(unlocked, Math.min(levels.length, level + 1));
         $("resultTitle").textContent = "🎉 LEVEL CLEARED!";
-        $("resultText").textContent = "You earned " + reward.toLocaleString() + " bonus coins. Level " + unlocked + " is unlocked!";
+        const nextLevel = unlocked < levels.length ? levels[unlocked - 1] : null;
+        const unlockMessage = nextLevel
+          ? " Level " + (nextLevel.displayNumber || (unlocked + 1)) + ": " + nextLevel.name + " is unlocked!"
+          : " All levels are unlocked!";
+        $("resultText").textContent = "You earned " + reward.toLocaleString() + " bonus coins." + unlockMessage;
       } else {
         $("resultTitle").textContent = "⏰ TIME'S UP!";
         $("resultText").textContent = "You landed " + hits + " of " + levels[level - 1].hits + " hits. Upgrade your tool and try again!";

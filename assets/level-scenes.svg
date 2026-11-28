@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="scene-piggy-bank" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v315H0Z" fill="#f3dcff"/>
+    <path d="M0 25h1000M0 45h1000" stroke="#fff4ff" stroke-width="8" opacity=".6"/>
+    <rect x="76" y="52" width="202" height="151" rx="8" fill="#9ad7ec" stroke="#fff8e9" stroke-width="18"/>
+    <path d="M177 52v151m-101-76h202" stroke="#fff8e9" stroke-width="12"/>
+    <path d="M65 48h36v163H65zm216 0h36v163h-36z" fill="#d77db2"/>
+    <path d="M0 307h1000v153H0Z" fill="#cfaa7f"/>
+    <path d="M0 315h1000M0 410h1000" stroke="#ae805c" stroke-width="8" opacity=".65"/>
+    <path d="M650 280v94h42v-71m178 0v71h42v-94" fill="#ab6844" stroke="#79503b" stroke-width="7"/>
+    <rect x="624" y="266" width="315" height="27" rx="8" fill="#e1ae6d" stroke="#79503b" stroke-width="7"/>
+    <path d="M646 282h271" stroke="#fff0c8" stroke-width="5"/>
+    <path d="M742 90q13-20 27 0m-27 17q13-20 27 0m-27 17q13-20 27 0" fill="none" stroke="#b37ac2" stroke-width="6" stroke-linecap="round"/>
+    <ellipse cx="784" cy="381" rx="185" ry="15" fill="#62455b" opacity=".15"/>
+  </symbol>
+
+  <symbol id="scene-mom-wallet" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v318H0Z" fill="#f8e0e8"/>
+    <path d="M0 36h1000m0 16H0" stroke="#fff4f3" stroke-width="9" opacity=".8"/>
+    <rect x="686" y="49" width="239" height="166" rx="12" fill="#d89fc7" stroke="#a9689c" stroke-width="9"/>
+    <rect x="704" y="66" width="203" height="132" rx="6" fill="#d8eff1"/>
+    <path d="M806 66v132m-102-67h203" stroke="#fff7e7" stroke-width="9"/>
+    <path d="M0 310h1000v150H0Z" fill="#e1c49d"/>
+    <path d="M0 322h1000" stroke="#bb9670" stroke-width="8"/>
+    <path d="M623 280v105h39v-79m224 0v79h39V280" fill="#a86750" stroke="#754a42" stroke-width="7"/>
+    <rect x="595" y="262" width="359" height="31" rx="9" fill="#e7ad79" stroke="#754a42" stroke-width="7"/>
+    <rect x="704" y="73" width="203" height="125" rx="5" fill="#d8eff1" opacity=".3"/>
+    <path d="M732 282q-10-47 8-47h71q18 0 8 47m-33-45v-30" fill="#af6aa1" stroke="#754a42" stroke-width="7"/>
+    <circle cx="776" cy="237" r="13" fill="#ffd7a0"/>
+    <path d="M858 240q8-30 20 0l11 22h-42Z" fill="#f2d470" stroke="#9b7542" stroke-width="5"/>
+    <ellipse cx="776" cy="393" rx="210" ry="13" fill="#644655" opacity=".13"/>
+  </symbol>
+
+  <symbol id="scene-dad-wallet" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v315H0Z" fill="#d7e0e6"/>
+    <path d="M0 38h1000" stroke="#f4f4ed" stroke-width="14" opacity=".75"/>
+    <rect x="72" y="52" width="203" height="203" rx="9" fill="#80533f" stroke="#593d37" stroke-width="8"/>
+    <path d="M85 65h177v57H85zm0 69h177v54H85zm0 65h177v48H85z" fill="#bb8157"/>
+    <path d="M105 67v49m43-49v49m57-49v49m-116 20v45m53-45v45m52-45v45m-94 22v40m61-40v40" stroke="#71503e" stroke-width="6"/>
+    <path d="M0 310h1000v150H0Z" fill="#9e795f"/>
+    <path d="M0 323h1000" stroke="#755642" stroke-width="9"/>
+    <path d="M629 282v100h42v-76m203 0v76h42V282" fill="#744a37" stroke="#4f392e" stroke-width="7"/>
+    <rect x="603" y="262" width="340" height="32" rx="7" fill="#b57f53" stroke="#4f392e" stroke-width="7"/>
+    <path d="M643 277h257" stroke="#e1b581" stroke-width="5"/>
+    <rect x="719" y="91" width="103" height="148" rx="14" fill="#52766c" stroke="#344e49" stroke-width="7"/>
+    <path d="M731 108h79m-79 14h79m-79 14h79" stroke="#9fc6a2" stroke-width="5"/>
+    <ellipse cx="777" cy="391" rx="200" ry="14" fill="#322e38" opacity=".15"/>
+  </symbol>
+
+  <symbol id="scene-teacher-desk" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v319H0Z" fill="#d9e8d5"/>
+    <path d="M0 37h1000" stroke="#f3f5df" stroke-width="14"/>
+    <rect x="77" y="49" width="413" height="184" rx="10" fill="#416a57" stroke="#956c4a" stroke-width="13"/>
+    <path d="M111 90q53-41 103 3t92-4m-179 91q44-40 92-3t113-14" fill="none" stroke="#eff0cd" stroke-width="6" opacity=".8"/>
+    <path d="M0 313h1000v147H0Z" fill="#b98a5c"/>
+    <path d="M0 326h1000" stroke="#80583f" stroke-width="9"/>
+    <path d="M628 281v103h44v-79m200 0v79h44V281" fill="#865338" stroke="#5b4034" stroke-width="7"/>
+    <rect x="599" y="261" width="350" height="33" rx="8" fill="#d39a61" stroke="#5b4034" stroke-width="7"/>
+    <path d="M646 274h254" stroke="#f5d09a" stroke-width="5"/>
+    <path d="M108 262h378" stroke="#eff0cd" stroke-width="6" stroke-dasharray="14 12"/>
+    <ellipse cx="777" cy="395" rx="203" ry="14" fill="#40352d" opacity=".15"/>
+  </symbol>
+
+  <symbol id="scene-safe" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v332H0Z" fill="#cbd3df"/>
+    <path d="M0 0h1000v18H0zM0 308h1000v28H0z" fill="#8792a5"/>
+    <path d="M46 42h908v247H46z" fill="#9ca9ba" stroke="#748092" stroke-width="12"/>
+    <path d="M65 62h870v207H65z" fill="#c2cad2" stroke="#e3e7e8" stroke-width="9"/>
+    <circle cx="783" cy="164" r="94" fill="#909dad" stroke="#65758a" stroke-width="12"/>
+    <circle cx="783" cy="164" r="70" fill="#c3cdd3" stroke="#68788a" stroke-width="9"/>
+    <circle cx="783" cy="164" r="49" fill="#8293a5" stroke="#536579" stroke-width="8"/>
+    <circle cx="783" cy="164" r="9" fill="#d7e0e0"/>
+    <path d="M783 164v-37m0 37 31 18m-31-18-28 22" stroke="#eef0e9" stroke-width="7" stroke-linecap="round"/>
+    <path d="M0 329h1000v131H0Z" fill="#707c91"/>
+    <path d="M617 302h331v26H617z" fill="#aeb6bf" stroke="#697587" stroke-width="7"/>
+    <path d="M648 328v57m267-57v57" stroke="#596579" stroke-width="14"/>
+    <ellipse cx="783" cy="391" rx="200" ry="14" fill="#202c3b" opacity=".2"/>
+  </symbol>
+
+  <symbol id="scene-big-safe" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v329H0Z" fill="#aeb8c9"/>
+    <path d="M0 32h1000M0 54h1000" stroke="#77869b" stroke-width="11"/>
+    <path d="M55 64h176v226H55zm714 0h176v226H769z" fill="#8190a4" stroke="#596a80" stroke-width="10"/>
+    <path d="M75 82h136v183H75zm714 0h136v183H789z" fill="#bec6ce" stroke="#718094" stroke-width="7"/>
+    <path d="M0 321h1000v139H0Z" fill="#78879b"/>
+    <path d="M0 338h1000" stroke="#596b80" stroke-width="11"/>
+    <path d="M617 297h337v35H617z" fill="#aeb8c5" stroke="#5e7086" stroke-width="8"/>
+    <path d="M642 330v57m286-57v57" stroke="#52647a" stroke-width="16"/>
+    <path d="M115 108h56m-56 34h56m-56 34h56m674-68h56m-56 34h56m-56 34h56" stroke="#e1e3df" stroke-width="7"/>
+    <circle cx="782" cy="191" r="41" fill="#50637b" stroke="#3f5269" stroke-width="7"/>
+    <path d="M782 165v26l18 13" fill="none" stroke="#dfe4e5" stroke-width="7" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="scene-bank" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v322H0Z" fill="#b9d1e4"/>
+    <path d="M0 265h1000v195H0Z" fill="#aeb5bd"/>
+    <path d="M0 303h1000m0 76H0" stroke="#dfe3e1" stroke-width="13"/>
+    <path d="M93 134 500 54l407 80v31H93Z" fill="#f4e3b8" stroke="#8a765a" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M111 173h778v136H111Z" fill="#f4e8d0" stroke="#8a765a" stroke-width="8"/>
+    <path d="M155 176h67v126h-67zm179 0h67v126h-67zm179 0h67v126h-67zm179 0h67v126h-67z" fill="#fff5df" stroke="#a08b69" stroke-width="8"/>
+    <path d="M88 310h824v37H88z" fill="#d1b988" stroke="#8a765a" stroke-width="8"/>
+    <path d="M647 266h301v38H647zM680 304v58m232-58v58" fill="#e3d1a6" stroke="#8a765a" stroke-width="8"/>
+    <path d="M708 85h-23m-95 0h-24m202 0h24m95 0h23" stroke="#fff3d4" stroke-width="8" stroke-linecap="round"/>
+    <ellipse cx="800" cy="372" rx="180" ry="13" fill="#444d59" opacity=".14"/>
+  </symbol>
+
+  <symbol id="scene-gundam-base-door" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v335H0Z" fill="#18253d"/>
+    <path d="M0 0h1000v18H0zM0 293h1000v42H0z" fill="#263c5a"/>
+    <path d="m88 0 174 294m650-294L738 294M0 94h1000M0 190h1000" stroke="#385375" stroke-width="5" opacity=".65"/>
+    <circle cx="107" cy="71" r="4" fill="#b9f4ff"/>
+    <circle cx="249" cy="127" r="3" fill="#b9f4ff"/>
+    <circle cx="868" cy="82" r="4" fill="#b9f4ff"/>
+    <circle cx="755" cy="42" r="3" fill="#b9f4ff"/>
+    <path d="M0 335h1000v125H0Z" fill="#34455d"/>
+    <path d="M0 359h1000m-790 101 179-102m242 102 179-102m-436 102 89-102m279 102 89-102" stroke="#526982" stroke-width="7"/>
+    <path d="M342 61h316v287H342z" fill="#263a56" stroke="#536f8b" stroke-width="12"/>
+    <path d="M367 82h130v245H367zm136 0h130v245H503z" fill="#718ba2" stroke="#b8d5e0" stroke-width="7"/>
+    <path d="M381 99h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m35-210h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101m-101 18h101" stroke="#a9c5d5" stroke-width="4" opacity=".8"/>
+    <path d="M488 82v245m24-245v245" stroke="#24364e" stroke-width="8"/>
+    <path d="M362 53h276v28H362z" fill="#112239" stroke="#6ed9ee" stroke-width="5"/>
+    <text x="500" y="73" fill="#eafaff" font-family="system-ui, sans-serif" font-size="17" font-weight="900" letter-spacing="3" text-anchor="middle">GUNDAM BASE</text>
+    <path d="M327 324h346v22H327z" fill="#55d5e8"/>
+    <path d="M0 328h302m396 0h302" stroke="#6ed9ee" stroke-width="8"/>
+    <ellipse cx="500" cy="377" rx="265" ry="18" fill="#53d5ed" opacity=".18"/>
+  </symbol>
+
+  <symbol id="scene-dragon-egg" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v330H0Z" fill="#29223d"/>
+    <path d="M0 0h1000v170L0 275Z" fill="#382b4b"/>
+    <path d="m0 54 136 53-79 54 173 45-52 72m822-224-148 63 77 47-176 58 54 70" fill="#4a3651" stroke="#67475a" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M0 315q95-44 189 0t190 0 190 0 190 0 241 0v145H0Z" fill="#563d4d"/>
+    <path d="M0 365q120-34 240 0t240 0 240 0 280 0" fill="none" stroke="#8f584f" stroke-width="12" opacity=".8"/>
+    <path d="M0 403q125-23 250 0t250 0 250 0 250 0" fill="none" stroke="#b26751" stroke-width="8" opacity=".65"/>
+    <path d="M119 107 88 196h63zm743-16-37 100h76z" fill="#67b6b5" stroke="#346b75" stroke-width="7" stroke-linejoin="round"/>
+    <path d="m119 126-17 52h34zm743-17-20 58h40z" fill="#c6f7df" opacity=".8"/>
+    <path d="M635 305q-28-42 9-74 26-23 52 6 25-35 56-3 32 33 4 71" fill="#a24d50" stroke="#593845" stroke-width="9"/>
+    <path d="M618 307q66-28 155 0l38 35q-111 39-232 0Z" fill="#b87955" stroke="#593845" stroke-width="9" stroke-linejoin="round"/>
+    <path d="M664 337h65m16 0h44" stroke="#f4cb78" stroke-width="7" stroke-linecap="round"/>
+    <ellipse cx="734" cy="367" rx="175" ry="22" fill="#eb8850" opacity=".24"/>
+    <path d="M320 83q20-25 40 0m-20-20v39m321-12q16-19 32 0m-16-16v31" fill="none" stroke="#f2bc74" stroke-width="6" stroke-linecap="round" opacity=".7"/>
+  </symbol>
+
+  <symbol id="scene-banana-bus" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v315H0Z" fill="#b9edff"/>
+    <circle cx="835" cy="83" r="44" fill="#ffdb65"/>
+    <path d="M0 228q132-98 275 0t278 0 260 0 187-16v106H0Z" fill="#76bd79"/>
+    <path d="M0 277q133-42 267 0t267 0 267 0 199-11v53H0Z" fill="#4e9967"/>
+    <path d="M0 312h1000v148H0Z" fill="#59636a"/>
+    <path d="M0 333h1000M0 443h1000" stroke="#37444c" stroke-width="11"/>
+    <path d="M72 387h133m78 0h133m78 0h133m78 0h133m78 0h84" stroke="#f7e9ae" stroke-width="12" stroke-linecap="round"/>
+    <path d="M118 281V89m0 50q-68-73-92-31 45 4 92 44m2-18q48-74 83-42-34 9-82 56m-2-33q-8-79 32-88 4 42-24 93m-9-24q-73-32-82 8 40-5 84 15" fill="none" stroke="#347b52" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M923 278V111m0 42q-55-64-83-29 40 4 82 40m2-23q42-62 72-35-31 9-71 48m-4-31q-6-64 26-72 6 36-19 78" fill="none" stroke="#347b52" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M518 202h71v91h-71z" fill="#fff5cf" stroke="#84683f" stroke-width="7"/>
+    <path d="M553 218v49m-19-25h38" stroke="#e9b847" stroke-width="7"/>
+    <path d="M526 213h55" stroke="#f4a54c" stroke-width="7"/>
+    <path d="M336 272q-18-32 6-54 21-18 39 5 21-25 42-2 23 25 4 51" fill="#ffda55" stroke="#98713a" stroke-width="7"/>
+    <path d="M333 273h98v18h-98z" fill="#efb84c" stroke="#98713a" stroke-width="7"/>
+    <path d="M0 315h1000" stroke="#8bd0a0" stroke-width="9"/>
+    <ellipse cx="382" cy="304" rx="90" ry="12" fill="#344b42" opacity=".17"/>
+  </symbol>
+
+  <symbol id="scene-my-wallet" viewBox="0 0 1000 460">
+    <path d="M0 0h1000v315H0Z" fill="#d8e8f4"/>
+    <path d="M0 29h1000" stroke="#f6f7ed" stroke-width="13"/>
+    <rect x="72" y="55" width="192" height="183" rx="12" fill="#fff3de" stroke="#bb8e6e" stroke-width="9"/>
+    <path d="M92 75h152v143H92z" fill="#add8e4"/>
+    <path d="M168 75v143m-76-71h152" stroke="#fff8eb" stroke-width="9"/>
+    <path d="M0 310h1000v150H0Z" fill="#bb9276"/>
+    <path d="M0 325h1000" stroke="#8c6656" stroke-width="9"/>
+    <path d="M620 279v106h42v-78m215 0v78h42V279" fill="#845344" stroke="#5b4037" stroke-width="7"/>
+    <rect x="590" y="260" width="357" height="33" rx="9" fill="#d59d72" stroke="#5b4037" stroke-width="7"/>
+    <path d="M648 274h241" stroke="#f4d0a6" stroke-width="5"/>
+    <rect x="708" y="86" width="144" height="153" rx="8" fill="#8fc2bf" stroke="#557e7c" stroke-width="8"/>
+    <path d="M720 99h120v126H720z" fill="#b9dadd"/>
+    <path d="M740 108h74m-74 13h74" stroke="#eef5ed" stroke-width="5"/>
+    <ellipse cx="778" cy="394" rx="195" ry="13" fill="#413446" opacity=".14"/>
+  </symbol>
+</svg>

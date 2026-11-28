@@ -29,6 +29,14 @@
       <stop stop-color="#62e0c1"/>
       <stop offset="1" stop-color="#138b85"/>
     </linearGradient>
+    <linearGradient id="dragon-egg-gradient" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#8ef0c2"/>
+      <stop offset=".5" stop-color="#37a88f"/>
+      <stop offset="1" stop-color="#285b77"/>
+    </linearGradient>
+    <clipPath id="dragon-egg-clip">
+      <path d="M120 32C84 32 59 81 59 132c0 46 27 75 61 75s61-29 61-75c0-51-25-100-61-100Z"/>
+    </clipPath>
   </defs>
 
   <symbol id="piggy-bank" viewBox="0 0 240 240">
@@ -135,6 +143,51 @@
     <path d="M49 91h142" stroke="#fff1c7" stroke-width="4" opacity=".8"/>
     <circle cx="66" cy="196" r="3" fill="#fff0bd"/>
     <circle cx="174" cy="196" r="3" fill="#fff0bd"/>
+  </symbol>
+
+  <symbol id="gundam-base-door" viewBox="0 0 240 240">
+    <ellipse cx="120" cy="216" rx="91" ry="12" fill="#21153f" opacity=".3"/>
+    <path d="M37 202V81q0-24 23-24h120q23 0 23 24v121Z" fill="#344b72" stroke="#1b2b48" stroke-width="9"/>
+    <path d="M51 198V83q0-14 14-14h110q14 0 14 14v115Z" fill="url(#steel)" stroke="#d7f0f8" stroke-width="5"/>
+    <path d="M119 74v124m8-124v124" stroke="#344b72" stroke-width="5"/>
+    <path d="M63 92h49v90H63zm65 0h49v90h-49z" fill="#435b78" stroke="#c3dbe4" stroke-width="4"/>
+    <path d="M72 101h31m-31 9h31m-31 9h31m-31 9h31m-31 9h31m-31 9h31m-31 9h31m34-43h31m-31 9h31m-31 9h31m-31 9h31m-31 9h31m-31 9h31m-31 9h31" stroke="#829db4" stroke-width="3"/>
+    <path d="M42 43h156v21H42Z" fill="#1b2b48" stroke="#344b72" stroke-width="4"/>
+    <text x="120" y="58" fill="#eafaff" font-family="system-ui, sans-serif" font-size="12" font-weight="900" letter-spacing="1.5" text-anchor="middle">GUNDAM BASE</text>
+    <path d="M34 195h172v12H34z" fill="#54d7ef" stroke="#1b2b48" stroke-width="4"/>
+    <path d="M70 208h100m-87 5h74" stroke="#d9faff" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="109" cy="139" r="4" fill="#ffd84d"/>
+    <circle cx="130" cy="139" r="4" fill="#ffd84d"/>
+  </symbol>
+
+  <symbol id="dragon-egg" viewBox="0 0 240 240">
+    <ellipse cx="120" cy="213" rx="73" ry="12" fill="#21153f" opacity=".3"/>
+    <path d="m75 181-17 16m107-16 17 16" stroke="#ae744b" stroke-width="12" stroke-linecap="round"/>
+    <path d="M120 32C84 32 59 81 59 132c0 46 27 75 61 75s61-29 61-75c0-51-25-100-61-100Z" fill="url(#dragon-egg-gradient)" stroke="#173d4d" stroke-width="9"/>
+    <g clip-path="url(#dragon-egg-clip)" fill="none" stroke="#baf7ce" stroke-width="5" opacity=".8">
+      <path d="m56 75 18 10-17 11 19 11-16 12 20 11-15 13 20 10-13 14 19 10-10 15m104-117-18 10 17 11-19 11 16 12-20 11 15 13-20 10 13 14-19 10 10 15"/>
+      <path d="m80 53 13 9-11 11 15 9-12 11 15 9-12 12 15 9-11 11 15 9-10 12m53-102-13 9 11 11-15 9 12 11-15 9 12 12-15 9 11 11-15 9 10 12"/>
+    </g>
+    <path d="m120 77 9 13-8 9 11 12-12 12 9 10-13 13 8 11-13 14" fill="none" stroke="#ffe59a" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="m94 90 5-10m42 10-5-10m-43 55-5 8m64-8 5 8" stroke="#e5ffc9" stroke-width="5" stroke-linecap="round"/>
+    <path d="M97 43q22-11 45 0" fill="none" stroke="#e7ffe3" stroke-width="6" stroke-linecap="round" opacity=".8"/>
+    <path d="m120 67 5 9-5 8-5-8Z" fill="#fff1a4"/>
+  </symbol>
+
+  <symbol id="banana-bus" viewBox="0 0 240 240">
+    <ellipse cx="123" cy="204" rx="91" ry="12" fill="#21153f" opacity=".3"/>
+    <path d="M56 170q-14 3-20 17l-15-4q2-23 23-33m156-82q11-12 30-10l4 15q-16 5-23 20" fill="#589753" stroke="#356546" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M31 158c22-49 64-83 111-92 32-6 62 0 82 18l-31 76c-39-17-80-17-114 1l-44 29Z" fill="#ffd84d" stroke="#9b6726" stroke-width="8" stroke-linejoin="round"/>
+    <path d="M59 137c20-30 49-49 83-56 20-4 40-2 57 5l-10 24c-18-8-38-9-56-4-25 7-44 20-61 42Z" fill="#ffef9a" stroke="#b37c2e" stroke-width="5" stroke-linejoin="round"/>
+    <path d="m91 103 29-14-2 31-37 18Zm41-17q20-6 39-2l-10 30q-18-3-37 3Z" fill="#72c8df" stroke="#486c72" stroke-width="5" stroke-linejoin="round"/>
+    <path d="m174 91 19 6-12 24-19-4Z" fill="#72c8df" stroke="#486c72" stroke-width="5" stroke-linejoin="round"/>
+    <path d="m90 137 16-6-4 27-22 8Zm46-15 18-3-10 34-20 2Z" fill="#ffe17a" stroke="#b37c2e" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="87" cy="177" r="20" fill="#33434c" stroke="#192e38" stroke-width="6"/>
+    <circle cx="87" cy="177" r="8" fill="#cfe5df"/>
+    <circle cx="174" cy="151" r="20" fill="#33434c" stroke="#192e38" stroke-width="6"/>
+    <circle cx="174" cy="151" r="8" fill="#cfe5df"/>
+    <path d="M38 157q19 1 32 13m101-87q12-8 26-5" fill="none" stroke="#fff4c4" stroke-width="6" stroke-linecap="round"/>
+    <text x="127" y="146" fill="#78531e" font-family="system-ui, sans-serif" font-size="9" font-weight="900" letter-spacing="1" text-anchor="middle" transform="rotate(-12 127 146)">BANANA BUS</text>
   </symbol>
 
   <symbol id="my-wallet" viewBox="0 0 240 240">
